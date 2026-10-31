@@ -6,6 +6,7 @@
     <RootNamespace>Obsidian_Startup</RootNamespace>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
     <ApplicationIcon>Images\obsidian-icon.ico</ApplicationIcon>
   </PropertyGroup>
 

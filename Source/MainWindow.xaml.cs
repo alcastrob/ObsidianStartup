@@ -40,13 +40,10 @@ namespace Obsidian_Startup
 		private void CloseDialog(object sender, RoutedEventArgs e) => Close();
 		private void ChooseVault(object sender, RoutedEventArgs e)
 		{
-			if (config != null)
-			{
-				foreach (var vault in config.vaults)
-					vault.Value.open = false;
-				ObsidianUtil.SaveVaults(config);
-			}
-			ObsidianUtil.Launch();
+			var initial = config?.vaults.Values.OrderByDescending(it => it.ts).FirstOrDefault()?.path;
+			var folder = ObsidianUtil.PickFolder(initial == null ? null : Path.GetDirectoryName(initial));
+			if (folder != null)
+				ObsidianUtil.OpenVaultFolder(folder, config);
 			Close();
 		}
 		private void OpenVault(object sender, RoutedEventArgs e)
